@@ -53,18 +53,21 @@ export function toSheetRows(companies) {
     'Site Web'
   ];
 
-  const rows = companies.map(c => [
-    cleanValue(c.immatriculation),
-    cleanValue(c.raison_sociale),
-    cleanValue(c.enseigne),
-    cleanValue(c.adresse),
-    cleanValue(c.code_postal),
-    cleanValue(c.ville),
-    formatPhone(c.telephone),
-    formatPhone(c.fax),
-    cleanValue(c.email),
-    cleanValue(c.site_web)
-  ]);
+  const rows = companies
+    .map(c => [
+      cleanValue(c.immatriculation),
+      cleanValue(c.raison_sociale),
+      cleanValue(c.enseigne),
+      cleanValue(c.adresse),
+      cleanValue(c.code_postal),
+      cleanValue(c.ville),
+      formatPhone(c.telephone),
+      formatPhone(c.fax),
+      cleanValue(c.email),
+      cleanValue(c.site_web)
+    ])
+    // Ne garder que les lignes avec au moins une valeur non vide
+    .filter(row => row.some(cell => String(cell).trim() !== ''));
 
   return { headerRow, rows };
 }

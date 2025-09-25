@@ -70,7 +70,7 @@ async function scrapePage(pageNumber = 1) {
     
     console.log(`\n📊 ${companies.length}/${links.length} entreprises scrapées avec succès`);
     
-    // 3. FORMATAGE DIRECT pour Google Sheets
+  // 3. FORMATAGE DIRECT pour Google Sheets
     console.log('📋 Formatage pour Google Sheets...');
     
     // Titre
@@ -78,24 +78,28 @@ async function scrapePage(pageNumber = 1) {
     const titleRow = [`=== PAGE ${pageNumber} - ${dateStr} - ${companies.length} entreprises ===`];
     
     // Données formatées avec helpers partagés
-    const { headerRow, rows: dataRows } = toSheetRows(companies);
+  const { headerRow, rows: dataRows } = toSheetRows(companies);
     
     // 4. EXPORT vers Google Sheets
-    console.log(`\n📤 Export vers Google Sheets...`);
-    const allRows = [titleRow, headerRow, ...dataRows];
-    
-    await appendRows({
-      spreadsheetId: '1ofcXp6KwLPbO7TJOdJ3Y4lSh4e4Jc5x2GIQ3GIjEgC4',
-      range: 'ScrapSheet',
-      values: allRows
-    });
-    
-    console.log(`✅ SUCCÈS ! ${companies.length} entreprises exportées vers Google Sheets`);
-    console.log('🔍 Vérifiez votre Google Sheet maintenant !');
+    if (dataRows.length > 0) {
+      console.log(`\n📤 Export vers Google Sheets...`);
+      const allRows = [titleRow, headerRow, ...dataRows];
+
+      await appendRows({
+        spreadsheetId: '1ofcXp6KwLPbO7TJOdJ3Y4lSh4e4Jc5x2GIQ3GIjEgC4',
+        range: 'ScrapSheet',
+        values: allRows
+      });
+
+      console.log(`✅ SUCCÈS ! ${dataRows.length} entreprises exportées vers Google Sheets`);
+      console.log('🔍 Vérifiez votre Google Sheet maintenant !');
+    } else {
+      console.log('⚠️ Aucune donnée exploitable à exporter (toutes les fiches vides ou invalides). Rien envoyé à Google Sheets.');
+    }
     
     return {
       success: true,
-      count: companies.length,
+      count: dataRows.length,
       page: pageNumber
     };
     

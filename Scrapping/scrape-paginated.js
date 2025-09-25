@@ -39,6 +39,7 @@ async function scrapeOnePage(page) {
     await sleep(120);
   }
 
+  // Garder uniquement les entreprises sans erreur et avec au moins une vraie donnée
   const valid = companies.filter(c => !c.error);
   const { headerRow, rows } = toSheetRows(valid);
   const titleRow = [`=== PAGE ${page} - ${new Date().toLocaleDateString('fr-FR')} - ${rows.length} entreprises ===`];

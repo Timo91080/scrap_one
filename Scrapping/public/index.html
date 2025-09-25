@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projet JS + Node + HTML</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div id="app">
+    <h1>🕷️ Web Scraper EDV Travel</h1>
+    <p>Testez votre scraper directement depuis cette interface.</p>
+    
+    <div style="margin: 1rem 0; display: flex; gap: 1rem; flex-wrap: wrap;">
+      <button id="ping-btn">🔗 Test Ping</button>
+      <button id="scrape-detail-btn">📄 Test Détail</button>
+      <button id="test-links-btn">🔗 Test Liens d'une page</button>
+      <button id="scrape-page-btn">🚀 SCRAPE UNE PAGE COMPLÈTE</button>
+      <button id="scrape-page-fast-btn">⚡ SCRAPE ULTRA-RAPIDE (3min)</button>
+      <button id="scrape-simple-btn">✨ SCRAPE SIMPLE + GOOGLE SHEETS</button>
+      <button id="scrape-multiple-btn">📋 SCRAPE PLUSIEURS PAGES</button>
+      <button id="scrape-paginated-btn">📑 SCRAPE PAGINÉ (export page par page)</button>
+      <button id="scrape-list-btn">📋 Test Liste (5 fiches)</button>
+      <button id="scrape-all-btn">🌍 SCRAPE TOUTES LES PAGES</button>
+      <button id="export-btn">📊 Test Export Google Sheets</button>
+    </div>
+    
+    <div style="margin: 1rem 0; padding: 1rem; background: #1f2937; border-radius: 0.5rem;">
+      <label>⚙️ Configuration scraping:</label>
+      <div style="display: flex; gap: 1rem; margin-top: 0.5rem; flex-wrap: wrap;">
+        <div>
+          <label>Page unique:</label>
+          <input type="number" id="single-page" value="1" min="1" max="111" style="width: 80px;">
+        </div>
+        <div>
+          <label>Page de début:</label>
+          <input type="number" id="start-page" value="1" min="1" max="111" style="width: 80px;">
+        </div>
+        <div>
+          <label>Page de fin:</label>
+          <input type="number" id="end-page" value="5" min="1" max="111" style="width: 80px;">
+        </div>
+        <div>
+          <label>Pages max:</label>
+          <input type="number" id="max-pages" value="5" min="1" max="111" style="width: 80px;">
+        </div>
+        <div>
+          <label>Batch size:</label>
+          <input type="number" id="batch-size" value="5" min="1" max="50" style="width: 80px;">
+        </div>
+      </div>
+    </div>
+    
+    <div style="margin: 1rem 0;">
+      <label>URL personnalisée :</label>
+      <input type="text" id="custom-url" placeholder="https://edv.travel/annuaire-des-adherents/fiche-adherent/?id=52213" style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;">
+    </div>
+    
+    <pre id="result">Cliquez sur un bouton pour tester...</pre>
+  </div>
+  <script src="/main.js" type="module"></script>
+</body>
+</html>

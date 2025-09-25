@@ -1,0 +1,28 @@
+{
+  "name": "scrapping",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js",
+    "dev": "nodemon --watch src --ext js --exec node src/server.js",
+    "scrape:5": "node scrape-paginated.js 1 5"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "googleapis": "^126.0.1",
+    "undici": "^5.28.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
